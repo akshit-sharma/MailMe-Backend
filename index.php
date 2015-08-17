@@ -1,5 +1,8 @@
 <?php
 
+    $hello = 'hello world<br/>';
+    echo $hello;
+
     require_once('config/config.php');
 
     $hello = 'hello world<br/>';
@@ -10,7 +13,7 @@
     $message = "this is a test message";
     $from = "faaltu@faaltu.lol";
 
-    $sendgridconfig = new SendGridConfig();
+//    $sendgridconfig = new SendGridConfig();
 
     $api_user  = $sendgridconfig->$api_user;
     $api_key  = $sendgridconfig->$api_key;
