@@ -29,10 +29,8 @@
           ->setHtml($message);
 
     try {
-        $response = $sendgrid->send($email);
-       if(!$deploy)
-            var_dump($response);
-       // $success = true;
+        $sendgrid->send($email);
+        // $success = true;
     } catch(\SendGrid\Exception $e) {
         if (!$deploy) {
             echo $e->getCode();
