@@ -2,6 +2,10 @@
 #configuration file
 /config/config.php
 
+#not to track composer.phar
+vendor/
+composer.lock
+composer.phar
 
 # Created by .ignore support plugin (hsz.mobi)
 ### JetBrains template
