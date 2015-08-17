@@ -6,18 +6,22 @@
 
     $REFERRER = $_SERVER['HTTP_REFERER'];
 
-    if($debug)
+    if($debug){
         echo "Referrer is $REFERRER";
-
-    if ($REFERRER == '') {
-        exit(header('Location: 404.php'));
     }
+    else{
 
-    $domain = substr($REFERRER, strpos($REFERRER, '://')+3);
-    $domain = substr($domain, 0, strpos($domain, '/'));
+        if ($REFERRER == '') {
+            exit(header('Location: 404.php'));
+        }
 
-    if (!in_array($domain, $allowed_domains)) {
-        exit(header('Location:404.php'));
+        $domain = substr($REFERRER, strpos($REFERRER, '://')+3);
+        $domain = substr($domain, 0, strpos($domain, '/'));
+
+        if (!in_array($domain, $allowed_domains)) {
+            exit(header('Location:404.php'));
+        }
+
     }
 
 ?>
