@@ -1,11 +1,11 @@
 <?php
 
-    $hello = 'hello world<br/>';
+    $hello = 'hello world 1<br/>';
     echo $hello;
 
     require_once('config/config.php');
 
-    $hello = 'hello world<br/>';
+    $hello = 'hello world 2<br/>';
     echo $hello;
 
     $to = $_REQUEST['to'];
