@@ -1,6 +1,6 @@
 <?php
 
-    require_once('config.php');
+    require_once('config/config.php');
 
     $hello = 'hello world<br/>';
     echo $hello;
