@@ -5,7 +5,7 @@
 
     require_once('config/config.php');
 
-    $hello = 'hello world 2<br/>';
+    $hello = 'hello world 2 <br/>';
     echo $hello;
 
     $to = $_REQUEST['to'];
