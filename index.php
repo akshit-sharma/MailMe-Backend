@@ -1,34 +1,48 @@
 <?php
 
-    $hello = 'hello world 1<br/>';
-    echo $hello;
-
     require_once('config/config.php');
+    require_once 'vendor/autoload.php';
 
-    $hello = 'hello world 2 <br/>';
-    echo $hello;
+    $deploy = false;
+    $success = false;
 
     $to = $_REQUEST['to'];
     $subject = 'Test mail';
     $message = "this is a test message";
     $from = "faaltu@faaltu.lol";
 
-    $sendgridconfig = new SendGridConfig();
+    if(!isset($to)){
+        echo "send email address in to param";
+    }
 
-    $api_user  = $sendgridconfig->$api_user;
-    $api_key  = $sendgridconfig->$api_key;
+    $sgc = new SendGridConfig();
 
-    echo "user $api_key<br/>key $api_key<br/>";
+    $api_user  = $sgc::$api_user;
+    $api_key  = $sgc::$api_key;
 
-//
-//    $sendgrid = new SendGrid($api_user, $api_key);
-//    $email    = new SendGrid\Email();
-//
-//    $email->addTo($to)
-//          ->setFrom($from)
-//          ->setSubject($subject)
-//          ->setHtml($message);
-//
-//    $sendgrid->send($email);
+    $sendgrid = new SendGrid($api_user, $api_key);
+    $email    = new SendGrid\Email();
+
+    $email->addTo($to)
+          ->setFrom($from)
+          ->setSubject($subject)
+          ->setHtml($message);
+
+    try {
+        $sendgrid->send($email);
+        $success = true;
+    } catch(\SendGrid\Exception $e) {
+        if (!$deploy) {
+            echo $e->getCode();
+            foreach ($e->getErrors() as $er) {
+                echo $er;
+            }
+        }
+    }
+
+    if($success){
+        echo "Email sent";
+    }
 
 ?>
+
