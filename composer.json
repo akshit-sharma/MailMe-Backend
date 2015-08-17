@@ -1,0 +1,6 @@
+{
+  "name": "akshit-sharma/MailMe",
+  "require": {
+    "sendgrid/sendgrid": "~3.2"
+  }
+}
